@@ -1,0 +1,17 @@
+// https://www.hackerrank.com/challenges/earnings-of-employees/problem
+
+1.
+      select earning, count(*) 
+      from (select salary*months as earning from employee) emp
+      where earning = (select max(salary*months) from employee)
+      group by earning;
+
+2.
+      select salary*months as earnings, count(*) from employee
+      group by earnings
+      order by earnings desc 
+      limit 1;
+      
+3.
+      select salary*months, count(*) from employee
+      where salary*months = (select max(salary*months) from employee)
